@@ -23,7 +23,7 @@ ExecStart=/usr/bin/docker run --name openshift-monitoring-client --rm --privileg
 -v /var/log/containers:/var/log/containers:ro \
 -v /var/lib/docker/containers:/var/lib/docker/containers:ro \
 {% endif %}
-{% if inventory_hostname in groups['masters'] or inventory_hostname in groups['nodes'] %}
+{% if inventory_hostname in groups['masters'] or inventory_hostname in groups['nodes'] or inventory_hostname in groups['new_masters'] or inventory_hostname in groups['new_nodes'] %}
 -v /etc/origin:/etc/origin \
 -v /etc/logstash/conf.d:/etc/logstash/conf.d \
 {% endif %}
